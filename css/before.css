@@ -1,0 +1,153 @@
+#before-us {
+    position: relative;
+    padding: 80px 20px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/* A linha central */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #b478ff, #7aa2f7, transparent);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%; /* Metade da tela */
+    margin-bottom: 60px;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+/* Alternando lados: Ímpares na esquerda, Pares na direita */
+.timeline-item:nth-child(odd) { left: -5%; padding-right: 40px; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; padding-left: 40px; text-align: left; }
+
+/* A bolinha na linha */
+.timeline-dot {
+    position: absolute;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 3px solid #b478ff;
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 0 15px #b478ff;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot { right: -9px; }
+.timeline-item:nth-child(even) .timeline-dot { left: -9px; }
+
+/* Conteúdo do Card */
+.timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(180, 120, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.timeline-date {
+    font-size: 0.8rem;
+    color: #ff8dfb;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Container que segura a imagem */
+.timeline-img {
+    width: 100%;
+    max-width: 300px; 
+    height: 200px;    
+    margin: 0 auto 15px auto;
+    
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center; /* Foca no centro da foto */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+    display: block;
+    border-radius: 15px; 
+}
+
+/* Ajuste para o hover não quebrar o padrão */
+.timeline-item:hover .timeline-img img {
+    transform: scale(1.01);
+}
+
+
+.timeline-content h3 { color: #f4ecff; margin-bottom: 10px; }
+.timeline-content p { color: #bfa3ff; font-size: 0.95rem; line-height: 1.5; }
+
+/* Destaque para o dia que se conheceram */
+.timeline-item.highlight .timeline-content {
+    border: 2px solid #ff8dfb;
+    box-shadow: 0 0 20px rgba(255, 141, 251, 0.3);
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+    .timeline-line { left: 20px; }
+    .timeline-item { width: 100%; left: 0 !important; padding-left: 50px !important; text-align: left !important; }
+    .timeline-dot { left: 12px !important; }
+}
+.timeline-img img {
+    width: 50%;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease; /* Adicionado o opacity */
+}
+
+/* Container principal sem fundo nenhum */
+.poem-universe {
+    width: 95% !important; 
+    max-width: 1100px !important; 
+    margin: 0 auto !important;
+    background: transparent !important; 
+    padding: 20px !important;
+    box-shadow: none !important; /* Tira qualquer sombra de caixa */
+}
+
+/* Formatação do texto solto no universo */
+.poem-text {
+    font-size: 1.2rem !important;
+    line-height: 1.7 !important;
+    color: #ffffff !important;
+    text-align: center !important; 
+    margin-bottom: 30px !important; 
+    background: transparent !important;
+    
+    text-shadow: 0 0 8px rgba(187, 154, 247, 0.6) !important; 
+}
+
+/* No iPhone, para não ficar colado nas bordas */
+@media (max-width: 768px) {
+    .poem-text {
+        font-size: 1.1rem !important;
+        padding: 0 15px !important;
+    }
+}
+
+.welcome-title {
+    text-align: center !important;
+    display: block !important;
+    margin-bottom: 50px !important;
+}
+

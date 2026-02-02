@@ -1,0 +1,79 @@
+/* FUNDO UNIVERSO */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #12001f, #05000a);
+  color: #fff;
+}
+
+.screen {
+  position: fixed; 
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  pointer-events: none;
+  text-align: center;
+  transition: opacity 0.8s ease; 
+}
+
+.screen.active {
+  display: flex;
+  pointer-events: all;
+}
+
+.universe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+/* BOLO */
+.cake-icon {
+  font-size: 120px;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* TEXTOS */
+.title {
+  font-family: 'Times New Roman', serif; 
+  font-size: 64px; /* Aumentado para destaque */
+  font-weight: 400;
+  margin: 0;
+  background: linear-gradient(to right, #e0b0ff, #b478ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.love {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  color: #bfa3ff;
+  margin: 10px 0;
+  opacity: 0.9;
+}
+
+/* IDADE (21 anos) */
+.age {
+  font-family: 'Times New Roman', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* BOTÃO */
+.btn-universe {
+  margin-top: 40px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}

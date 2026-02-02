@@ -1,0 +1,488 @@
+/* Ajuste de ancoragem para não ficar espaço em cima ao clicar */
+#roots {
+  scroll-margin-top: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.roots-header {
+    text-align: center;
+    margin-bottom: 20px;
+     /* Alinha com o filme respeitando o Nav */
+}
+
+.section-subtitle {
+    color: rgba(187, 154, 247, 0.8);
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* CONTAINER DO FILME */
+.film-container {
+    overflow: hidden;
+    padding: 30px 0;
+    width: 80%;
+    position: relative;
+    /* EFEITO DE DISPERSÃO (FADE LATERAIS) */
+    -webkit-mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%
+    );
+    mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        black 15%, 
+        black 85%, 
+        transparent 100%
+    );
+}
+
+.film-track {
+    display: flex;
+    margin-bottom: 25px;
+    background: #1a1a1a6e;
+    padding: 15px 0;
+    position: relative;
+    border-top: 8px dashed #333;
+    border-bottom: 8px dashed #333;
+    width: 100%;
+}
+
+.film-strip {
+    display: flex;
+    width: max-content;
+}
+
+.frame {
+    width: 250px;
+    height: 180px;
+    margin: 0 10px;
+    flex-shrink: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 4px solid #333;
+    border-right: 4px solid #333;
+    transition: 0.3s;
+}
+
+.frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: sepia(0.3) contrast(1.1);
+    transition: 0.3s;
+}
+
+.frame:hover img {
+    filter: sepia(0);
+    transform: scale(1.05);
+}
+
+/* ANIMAÇÕES */
+.strip-left { animation: scrollLeft 40s linear infinite; }
+.strip-right { animation: scrollRight 40s linear infinite; }
+
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.film-track:hover .film-strip {
+    animation-play-state: paused;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .film-container, .roots-header {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #roots { justify-content: flex-start; padding-top: 80px; }
+}
+
+#after {
+   min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    box-sizing: border-box;
+    width: 100%; /* Respeita o Nav */
+}
+
+.after-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.timeline-future {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.future-card {
+    position: relative;
+    width: 300px;
+    height: 380px;
+    background: rgba(30, 30, 40, 0.5); /* Fundo um pouco mais suave */
+    border: 1px solid rgba(187, 154, 247, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* EFEITO INICIAL: CINZA */
+    filter: grayscale(100%);
+    opacity: 0.7; /* Fica um pouco mais discreto antes do hover */
+    
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+}
+
+.card-content {
+    padding: 30px;
+    z-index: 2;
+}
+
+.card-content i {
+    font-size: 3.5rem;
+    color: #bb9af7; /* Cor base roxa */
+    margin-bottom: 20px;
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.card-content h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0 20px;
+    font-size: 0.95rem;
+}
+
+/* Efeito de Brilho Interno */
+.future-card:hover {
+    filter: grayscale(0%); /* Remove o cinza */
+    opacity: 1;
+    transform: translateY(-15px);
+    border-color: #bb9af7;
+    background: rgba(40, 30, 60, 0.8); /* Fundo ganha um tom arroxeado */
+    box-shadow: 0 15px 40px rgba(187, 154, 247, 0.2);
+}
+
+/* O ícone ganha um brilho especial no hover */
+.future-card:hover .card-content i {
+    text-shadow: 0 0 20px #bb9af7;
+    transform: scale(1.1);
+}
+
+/* Efeito de brilho que se dispersa ao fundo */
+.card-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(187, 154, 247, 0) 0%, transparent 70%);
+    transition: 0.5s;
+}
+
+.future-card:hover .card-glow {
+    background: radial-gradient(circle at center, rgba(187, 154, 247, 0.15) 0%, transparent 70%);
+}
+
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+    #after { margin-left: 0; }
+    .future-card { width: 100%; height: auto; }
+}
+
+
+
+/* Container Principal: Garante centralização total e ocupa a tela toda */
+#final-love {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.final-container {
+    width: 100%;
+    max-width: 800px; /* Limita a largura para leitura confortável */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Títulos: Seguindo o padrão Times New Roman do seu site */
+.final-title, .final-card-quote h3 {
+    font-family: 'Times New Roman', serif;
+    background: linear-gradient(to bottom, #fff, #b478ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+}
+
+.final-title {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+}
+
+/* Textos: Seguindo o padrão Inter/Space Grotesk */
+.final-text p, .final-card-quote p {
+    font-family: 'Inter', sans-serif;
+    color: #eae6f5;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Seta de Revelação */
+.reveal-arrow {
+    font-size: 2.5rem;
+    color: #ff8dfb;
+    cursor: pointer;
+    margin-top: 30px;
+    filter: drop-shadow(0 0 8px rgba(255, 141, 251, 0.4));
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite; /* Usa a animação que você já tem */
+}
+
+/* Card de Destaque Final */
+.final-card-quote {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.final-card-quote.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.final-card-quote.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Adicione isso ao seu roots.css */
+
+.return-arrow:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Animação de bounce para cima */
+@keyframes bounce-up {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Estado inicial do Card (Escondido) */
+.hidden-card {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Estado ativo do Card (Com animação de entrada) */
+.final-card-quote.show-card {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: fadeInUp 0.8s forwards; /* Aplica o efeito de subir suavemente */
+}
+
+/* Definição da animação de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Garante que a carta não suma */
+#final-letter-content {
+    opacity: 1 !important;
+    display: block !important;
+}
+
+/* Estilo do Card quando ativo */
+.final-card-quote.show-card {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    margin-top: 100px; /* Espaço para não ficar colado na carta */
+}
+
+/* --- Estilo da Foto no Card --- */
+/* --- Foto Quadrada com Brilho Cheddar --- */
+.final-card-photo {
+    width: 220px; /* Aumentei um pouco para dar mais destaque */
+    height: 220px;
+    margin: 0 auto 30px auto;
+    border-radius: 15px; /* Cantos levemente arredondados */
+    overflow: hidden;
+    /* Removida a borda sólida roxa */
+    border: none; 
+    
+    /* Efeito Cheddar Brilhante (várias camadas de brilho amarelo/laranja) */
+    box-shadow: 
+        0 0 15px #ffffffa2, 
+        0 0 30px #8c6ec5, 
+        0 0 45px #462b77,
+        0 0 60px #462b77;
+    
+    transition: transform 0.3s ease;
+}
+
+.final-card-photo:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.final-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a foto preencha o quadrado sem distorcer */
+}
+
+/* --- Letra Maior no Card --- */
+.final-card-quote h3 {
+    font-size: 3rem !important; /* Título bem grande */
+    margin-bottom: 20px;
+}
+
+.final-card-quote p {
+    font-size: 1.5rem !important; /* Frase de impacto maior */
+    font-style: italic;
+    color: #ffffff;
+}
+
+.signature {
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 15px;
+}
+
+
+
+
+
+/* Estilo da seta de retorno */
+.return-arrow {
+    font-size: 2.5rem;
+    color: #ff8dfb;
+    cursor: pointer;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite; /* Usa a animação que você já tem no base.css */
+}
+
+/* --- Estrelas que se preenchem uma por uma --- */
+.stars-container {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.star-item {
+    font-size: 1.5rem;
+    color: #4a4a4a; /* Cor cinza inicial */
+    animation: fillSequence 5s infinite; /* Duração total do ciclo */
+}
+
+/* Delay para cada estrela (Sequência) */
+.star-item:nth-child(2) { animation-delay: 1s; }
+.star-item:nth-child(3) { animation-delay: 2s; }
+.star-item:nth-child(4) { animation-delay: 3s; }
+.star-item:nth-child(5) { animation-delay: 4s; }
+
+@keyframes fillSequence {
+    0%, 20% { color: #4a4a4a; } /* Cinza */
+    40%, 100% { 
+        color: #bb9af7; /* Roxo preenchido */
+        text-shadow: 0 0 10px #bb9af7; 
+    }
+}
+
+/* --- Coração com Brilho de Estrela Real --- */
+.star-shining-heart {
+    display: inline-block;
+    margin: 15px 0 30px 0;
+    color: #ffffff; /* Branco no centro como uma estrela */
+    font-size: 3.5rem;
+    /* Brilho externo intenso (Glow) */
+    filter: drop-shadow(0 0 15px #fff) 
+            drop-shadow(0 0 30px #ff8dfb) 
+            drop-shadow(0 0 45px #bb9af7);
+    animation: starPulse 2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+    0%, 100% { 
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px #ff8dfb);
+    }
+    50% { 
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 25px #fff) drop-shadow(0 0 50px #bb9af7);
+    }
+}
+
+/* Substitua a animação das estrelas no roots.css */
+@keyframes progressiveFill {
+    0%, 10% { 
+        color: #333; 
+        transform: scale(1);
+    }
+    30% { 
+        color: #bb9af7; 
+        text-shadow: 0 0 20px #bb9af7;
+        transform: scale(1.3); /* Dá um pulinho quando acende */
+    }
+    50%, 100% { 
+        color: #bb9af7; 
+        text-shadow: 0 0 10px #bb9af7;
+        transform: scale(1);
+    }
+}
+

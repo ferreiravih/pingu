@@ -1,0 +1,232 @@
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Opera */
+  width: 0;
+  height: 0;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #040308;
+  overflow-x: hidden; 
+  overflow-y: hidden; 
+  font-family: 'Inter', sans-serif;
+  color: #eae6f5;
+  min-height: 100vh;
+  scroll-behavior: smooth; 
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+}
+
+/* 2. FUNDO E ELEMENTOS FIXOS */
+#main-universe {
+  display: none; /* Começa escondido */
+  opacity: 0;
+  width: 100%;
+  position: relative; /* Importante para o scroll funcionar */
+}
+#starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#mouse-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 3. ESTRUTURA DE TELAS (INTRO E BOLO) */
+.screen {
+  display: none;
+  position: fixed; /* Mantém intro e bolo fixos na tela toda */
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+  gap: 18px;
+}
+
+.screen.active {
+  display: flex !important;
+}
+
+/* 4. CONTEÚDO DO UNIVERSO (O QUE APARECE DEPOIS) */
+#main-universe {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  /* Começa invisível para o JS ativar */
+  display: none; 
+  opacity: 0;
+}
+
+.section-content {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  box-sizing: border-box;
+}
+
+/* 5. MENU DE NAVEGAÇÃO (O "NAVIO") */
+.nav-universe {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  display: none; /* JS muda para flex */
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.nav-universe.visible {
+  display: flex !important;
+  opacity: 1 !important;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li a {
+  width: 50px;
+  height: 50px;
+  background: rgba(15, 10, 25, 0.8);
+  border: 1px solid rgba(180, 120, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bfa3ff; 
+  text-decoration: none;
+  font-size: 1.4rem; 
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.nav-list li a:hover {
+  background: rgba(180, 120, 255, 0.3);
+  border-color: #b478ff;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Garante que o item da lista seja o ponto de referência */
+.nav-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinha o ícone à direita se necessário */
+}
+
+/* O balão de texto (Tooltip) aparecendo pelo lado ESQUERDO */
+.nav-list li::after {
+    content: attr(title); 
+    position: absolute;
+    right: 70px; 
+    left: auto;  /* Reseta a propriedade left anterior */
+    
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(187, 154, 247, 0.3);
+    border-radius: 15px; 
+    color: rgba(255, 255, 255, 0.623);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: 'Space Grotesk', sans-serif;
+    white-space: nowrap;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateX(10px); /* Começa um pouco para a direita para deslizar à esquerda */
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Mostra o nome deslizando para a esquerda */
+.nav-list li:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* 6. BOTÕES E TÍTULOS (ESTÉTICA PRESERVADA) */
+.btn-glow {
+  background: rgba(148, 87, 235, 0.15);
+  color: #f4ecff;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(180, 120, 255, 0.35);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.35s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.welcome-title {
+  font-family: 'Times New Roman', serif;
+  font-size: 4rem;
+  background: linear-gradient(to bottom, #fff, #b478ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.welcome-subtitle {
+    font-size: 1.1rem;
+    color: #bfa3ff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.scroll-indicator {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Efeito suave para o conteúdo das seções */
+.section-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+/* Quando a seção entra na tela, ela ganha esta classe */
+.section-content.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+

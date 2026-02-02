@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Feliz 21 anos 🤍</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/cake.css">
+    <link rel="stylesheet" href="css/constellations.css">
+    <link rel="stylesheet" href="css/before.css">
+    <link rel="stylesheet" href="css/letters.css">
+    <link rel="stylesheet" href="css/roots.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <canvas id="starfield"></canvas>
+    <div id="mouse-cursor"></div>
+
+    <nav class="nav-universe" id="side-menu">
+        <ul class="nav-list">
+            <li title="Bem-vindo"><a href="#welcome"><i class="bi bi-stars"></i></a></li>
+            <li title="Constelações"><a href="#constellations"><i class="bi bi-star-fill"></i></a></li>
+            <li title="Antes de Nós"><a href="#before-us"><i class="bi bi-tree-fill"></i></a></li>
+            <li title="Poema"><a href="#poem-intro"><i class="bi bi-feather"></i></a></li>
+            <li title="21 Cartas"><a href="#letters-section"><i class="bi bi-envelope-heart"></i></a></li>
+            <li title="Trilhas Sonoras"><a href="#soundtrack"><i class="bi bi-headphones"></i></a></li>
+            <li title="Suas Raizes"><a href="#roots"><i class="fa-solid fa-seedling"></i></a></li>
+            <li title="Depois"><a href="#after"><i class="bi bi-rocket-takeoff-fill"></i></a></li>
+            <li title="Meu amor"><a href="#final-love"><i class="bi bi-heart-fill"></i></a></li>
+        </ul>
+    </nav>
+
+    <section class="screen screen-intro active">
+        <p class="text-subtitle">Preparei isso pra você…</p>
+        <button class="btn-glow" id="btnStart">✨ Clique ✨</button>
+    </section>
+
+    <section class="screen screen-cake">
+        <div class="universe-container">
+            <div class="cake-icon">🎂</div>
+            <h1 class="title">Feliz Aniversário</h1>
+            <p class="love">para o amor da minha vida 💜</p>
+            <h2 class="age">21 anos</h2>
+            <button class="btn-glow btn-universe" id="btnUniverse">Entrar no nosso universo ✨</button>
+        </div>
+    </section>
+
+    <main id="main-universe" style="display: none;">
+        <section class="section-content" id="welcome">
+            <h2 class="welcome-title">Tudo o que somos vive aqui.</h2>
+            <p class="welcome-subtitle">Explore com calma.</p>
+            <div class="scroll-indicator"><i class="bi bi-chevron-down"></i></div>
+        </section>
+
+        <section class="section-content" id="constellations">
+            <h2 class="welcome-title">Nossas Constelações</h2>
+            <p class="welcome-subtitle">Clique nas estrelas para revelar memórias</p>
+
+            <div class="constellation-map">
+                <svg id="constellation-svg"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
+
+                <div class="star-node" data-title="Sempre fomos nós" data-text="No meio de tanta coisa, sempre fomos nós dois.
+                E eu não trocaria isso por nada." data-img="assets/fotos/9.webp" style="top: 20%; left: 30%;">
+                    <div class="glow-dot"></div>
+                    <span class="star-label">Nós</span>
+                </div>
+
+                <div class="star-node" data-title="Onde tudo acontece" data-text="Não é sobre grandes momentos.
+                    É sobre dividir o dia,as conversas e o silêncio também." data-img="assets/fotos/10.webp"
+                    style="top: 40%; left: 20%;">
+                    <div class="glow-dot"></div>
+                    <span class="star-label">Rotina</span>
+                </div>
+
+                <div class="star-node" data-title="Seu riso é meu som favorito"
+                    data-text="Quando você ri, o meu mundo fica mais leve. Amo observar você."
+                    data-img="assets/fotos/4.webp" style="top: 50%; left: 50%;">
+                    <div class="glow-dot"></div><span class="star-label">Risos</span>
+                </div>
+
+                <div class="star-node" data-title="Meu lugar seguro"
+                    data-text="É no seu abraço que tudo se acalma. Ali eu sei que estou exatamente onde devo estar."
+                    data-img="assets/fotos/7.webp" style="top: 40%; left: 85%;">
+                    <div class="glow-dot"></div><span class="star-label">Abraço</span>
+                </div>
+
+                <div class="star-node" data-title="O que é simples,  que  deixa marca"
+                    data-text="Adoro ver você dormi. Sei que quando esta dormindo, não existe nenhum problema que te afete, e isso me tras paz."
+                    data-img="assets/fotos/6.webp" style="top: 80%; left: 12%;">
+                    <div class="glow-dot"></div><span class="star-label">Simples</span>
+                </div>
+
+                <div class="star-node" data-title="Você é a minha luz"
+                    data-text="Você é minha paz, meu porto seguro. E apesar dos problemas, eu sei que tudo vai dar certo."
+                    data-img="assets/fotos/5.webp" style="top: 75%; left: 30%;">
+                    <div class="glow-dot"></div><span class="star-label">Luz</span>
+                </div>
+
+                <div class="star-node" data-title="Onde meu coração descansa"
+                    data-text="Com você, tudo fica calmo. Meu coração desacelera e só sente paz."
+                    data-img="assets/fotos/8.webp" style="top: 85%; left: 60%;">
+                    <div class="glow-dot"></div><span class="star-label">Paz</span>
+                </div>
+
+                <div class="star-node" data-title="Nos detalhes, eu te amo mais"
+                    data-text="Pode parecer besta, mas para mim, isso é uma demonstração de cuidado."
+                    data-img="assets/fotos/3.webp" style="top: 70%; left: 90%;">
+                    <div class="glow-dot"></div><span class="star-label">Cuidado</span>
+                </div>
+
+                <div class="star-node" data-title="Só estar juntos, já é tudo para mim"
+                    data-text="Você não precisa fazer nada. Seja um momento cansativo ou descontraido, estando com você, tudo é otimo"
+                    data-img="assets/fotos/2.webp" style="top: 5%; left: 60%;">
+                    <div class="glow-dot"></div><span class="star-label">Presença</span>
+                </div>
+
+
+
+                <div id="memory-modal" class="modal-overlay">
+                    <div class="modal-card">
+                        <button class="close-modal">&times;</button>
+                        <h3 id="modal-title"></h3>
+                        <div class="modal-img-container">
+                            <img id="modal-img" src="" alt="Memória">
+                        </div>
+                        <p id="modal-text"></p>
+                    </div>
+                </div>
+        </section>
+
+
+        <section class="section-content" id="before-us">
+            <h2 class="welcome-title">Antes de Nós</h2>
+            <p class="welcome-subtitle">A trajetória que te trouxe até aqui</p>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Pequeno</span>
+                        <div class="timeline-img">
+                            <img src="assets/fotos/nenem1.webp"
+                                data-images="assets/fotos/nenem1.webp,assets/fotos/nenem2.jpeg,assets/fotos/nenem3.webp,assets/fotos/nenem4.webp,assets/fotos/nenem5.webp,assets/fotos/nenem5.webp,assets/fotos/nenem7.webp,assets/fotos/nenem8.webp,assets/fotos/nenem9.webp,assets/fotos/nenem10.webp"
+                                class="rotating-image" alt="Ele criança">
+                        </div>
+                        <h3>Onde tudo começou</h3>
+                        <p>Antes de tudo, existiu você.
+                            Pequeno, doce, com esse sorriso lindo
+                            que o tempo nunca conseguiu apagar.
+                            Aqui nasceu o meu reizinho do amendoim.</p>
+                    </div>
+                </div>
+
+
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Família</span>
+                        <div class="timeline-img">
+                            <img src="assets/fotos/familia1.webp"
+                                data-images="assets/fotos/familia1.webp,assets/fotos/familia2.webp,assets/fotos/familia3.webp,assets/fotos/familia4.webp,assets/fotos/familia5.webp,assets/fotos/familia6.webp,assets/fotos/familia7.webp,assets/fotos/familia8.webp,assets/fotos/familia9.webp,assets/fotos/familia10.webp,assets/fotos/familia11.webp,assets/fotos/familia12.webp,assets/fotos/familia13.webp,assets/fotos/familia14.webp,assets/fotos/familia15.webp,assets/fotos/familia16.webp"
+                                class="rotating-image" alt="Família">
+                        </div>
+                        <h3>Suas Raízes</h3>
+                        <p>Sua base sempre esteve aqui, com quem te viu crescer desde o começo. Foi no carinho da
+                            família que você cresceu, aprendeu e se fortaleceu. Essas raízes te sustentam até hoje.</p>
+                    </div>
+
+
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Crescer</span>
+                        <div class="timeline-img">
+                            <img src="assets/fotos/crescer1.webp"
+                                data-images="assets/fotos/crescer1.webp,assets/fotos/crescer2.webp,assets/fotos/crescer3.webp,assets/fotos/crescer4.webp,assets/fotos/crescer5.webp,assets/fotos/crescer6.webp,assets/fotos/crescer7.webp,assets/fotos/crescer8.webp,assets/fotos/crescer9.webp,assets/fotos/crescer10.webp,assets/fotos/crescer11.webp,assets/fotos/crescer12.webp,assets/fotos/crescer13.webp,assets/fotos/crescer14.webp,assets/fotos/crescer15.webp"
+                                class="rotating-image" alt="Lealdade">
+                        </div>
+                        <h3>Entre risos e descobertas</h3>
+                        <p>Dos primeiros anos até os novos começos, você foi crescendo do seu jeito.. com novas fases,
+                            novas versões, e cada uma delas fez parte do caminho.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Treino</span>
+                        <div class="timeline-img">
+                            <img src="assets/fotos/treino1.webp"
+                                data-images="assets/fotos/treino1.webp,assets/fotos/treino2.webp,assets/fotos/treino3.webp,assets/fotos/treino4.webp,assets/fotos/treino5.webp,assets/fotos/treino6.webp,assets/fotos/treino7.webp,assets/fotos/treino8.webp,assets/fotos/treino9.webp,assets/fotos/treino10.webp,assets/fotos/treino11.webp,assets/fotos/treino12.webp"
+                                class="rotating-image" alt="Treinos">
+                        </div>
+                        <h3>Dedicação e Força</h3>
+                        <p>O treino nunca foi só sobre o corpo. Foi sobre aprender disciplina, constância e resistência,
+                            sobre entender que crescer também exige esforço. Seguindo referências como David Goggins,
+                            você aprendeu a ir além do cansaço, a não parar quando fica difícil e a se tornar mais forte
+                            todos os dias — por dentro e por fora.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Nosso encontro</span>
+                        <div class="timeline-img">
+                            <img src="assets/fotos/encontro1.webp"
+                                data-images="assets/fotos/encontro1.webp,assets/fotos/encontro2.webp,assets/fotos/encontro3.webp,assets/fotos/encontro4.webp,assets/fotos/encontro5.webp,assets/fotos/encontro6.webp,assets/fotos/encontro7.webp,assets/fotos/encontro9.webp,assets/fotos/encontro10.webp,assets/fotos/encontro11.webp,assets/fotos/encontro12.webp,assets/fotos/encontro13.webp,assets/fotos/encontro14.webp,assets/fotos/encontro15.webp,assets/fotos/encontro16.webp,assets/fotos/encontro17.webp,assets/fotos/encontro18.webp,assets/fotos/encontro19.webp,assets/fotos/encontro20.webp,assets/fotos/encontro21.webp,assets/fotos/final2.webp,assets/fotos/final3.webp"
+                                class="rotating-image" alt="Nosso encontro">
+                        </div>
+                        <h3>O dia que mudou tudo</h3>
+                        <p>Desde 2022, nossa história vem sendo construída aos poucos. Vivemos momentos lindos,
+                            enfrentamos dificuldades e aprendemos a seguir juntos. Nem sempre foi fácil, mas sempre foi
+                            verdadeiro. E é isso que torna o nosso amor tão forte.
+                            Somos nós.
+                            E eu escolheria você, todas as vezes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">21 anos</span>
+                        <div class="timeline-img">
+                            <img src="assets/fotos/hoje1.webp"
+                                data-images="assets/fotos/hoje1.webp,assets/fotos/hoje2.webp,assets/fotos/hoje3.webp,assets/fotos/hoje4.webp,assets/fotos/hoje5.webp,assets/fotos/hoje6.webp,assets/fotos/hoje7.webp,assets/fotos/hoje8.webp,assets/fotos/hoje9.webp,assets/fotos/hoje10.webp,assets/fotos/hoje11.webp,assets/fotos/hoje12.webp,assets/fotos/hoje13.webp,assets/fotos/hoje14.webp,assets/fotos/hoje15.webp,assets/fotos/hoje16.webp,assets/fotos/hoje17.webp,assets/fotos/hoje18.webp,assets/fotos/hoje19.webp"
+                                class="rotating-image" alt="Foto atual">
+                        </div>
+                        <h3>21 Anos de Vida</h3>
+                        <p>Hoje você completa 21 anos, e eu celebro não só a sua idade, mas a pessoa incrível que você
+                            é, tudo o que viveu até aqui e tudo o que ainda vai conquistar, e sou imensamente grata por
+                            poder caminhar ao seu lado, dividir momentos, aprender com você e te amar todos os dias —
+                            feliz vida, feliz aniversário, meu amor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-content" id="poem-intro">
+            <div class="poem-universe">
+                <h2 class="welcome-title">Uma Ideia Roubada...</h2>
+
+                <p class="poem-text">
+                    No meu aniversário, você me deu 21 cartas, 21 motivos pra sorrir, cheios de músicas e declarações.
+                    Foi a coisa mais linda, com playlist e tudo. Você fez tudo com tanto carinho que conseguiu
+                    transformar cada música em algo muito maior do que apenas uma nota musical; você deu sentido a cada
+                    uma delas. E quando eu vi aquilo, você viu o quanto eu chorei.
+                </p>
+
+                <p class="poem-text">
+                    Foi incrível, muito especial, de um jeito difícil de explicar. Eu enxerguei carinho em cada folha de
+                    papel, em cada detalhe que você preparou, e guardei tudo aquilo com muito amor. O nosso universo
+                    funciona num ritmo só: do nosso jeito, com o nosso carinho, a nossa forma e a nossa música.
+                </p>
+
+                <p class="poem-text">
+                    E dentro desse universo, eu me inspirei no que você fez por mim e trouxe isso de volta pra você. É
+                    como dizem: nada se cria, tudo se copia. Então eu desenhei 21 cartas flutuando no nosso universo, e
+                    cada uma guarda uma música que representa o que eu sinto ao seu lado, o que você significa pra mim e
+                    o quanto eu te amo. Não é só palavra — é tudo aquilo que eu sinto, tudo aquilo que você é e tudo
+                    aquilo que nós ainda vamos ser. São 21 trilhas, 21 cartas, e cada uma delas leva a um caminho que eu
+                    sempre vou escolher: te amar.
+                </p>
+            </div>
+        </section>
+
+
+        <section class="section-content" id="letters-section">
+            <h2 class="welcome-title">21 Cartinhas</h2>
+            <p class="welcome-subtitle">Uma para cada ano de você</p>
+
+            <div class="letters-grid" id="lettersGrid">
+            </div>
+        </section>
+
+        <div id="letter-modal" class="modal-overlay">
+            <div class="modal-card letter-modal-custom">
+                <button class="close-modal" onclick="closeLetter()">×</button>
+
+                <div class="letter-corner-number" id="modal-num">#00</div>
+
+                <div class="letter-inner-content">
+                    <div class="music-quote">
+                        <i class="bi bi-quote"></i>
+                        <p id="modal-music-lyric">Título da Música</p>
+                    </div>
+
+                    <div class="personal-message">
+                        <p id="modal-text-target">A mensagem vai aparecer aqui.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="soundtrack" class="section-content">
+            <h2 class="section-title">🎧 Trilhas Sonoras</h2>
+            <p class="section-subtitle">Músicas que compõem a nossa história</p>
+
+            <div class="slider-wrapper">
+                <button class="nav-btn prev" id="prevBtn"><i class="bi bi-chevron-left"></i></button>
+
+                <div class="playlist-scroll-container" id="songsSlider">
+                    <div class="playlist-grid" id="songsGrid"></div>
+                </div>
+
+                <button class="nav-btn next" id="nextBtn"><i class="bi bi-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section id="roots" class="section-content">
+            <div class="roots-header">
+                <h2 class="section-title">Suas Raízes</h2>
+                <p class="section-subtitle">Cada estrela aqui brilha com um pedaço da sua história.</p>
+            </div>
+
+            <div class="film-container">
+                <div class="film-track">
+                    <div class="film-strip strip-left">
+                        <div class="frame"><img src="assets/fotos/2.webp"></div>
+                        <div class="frame"><img src="assets/fotos/4.webp"></div>
+                        <div class="frame"><img src="assets/fotos/6.webp"></div>
+                        <div class="frame"><img src="assets/fotos/7.webp"></div>
+                        <div class="frame"><img src="assets/fotos/8.webp"></div>
+                        <div class="frame"><img src="assets/fotos/9.webp"></div>
+                        <div class="frame"><img src="assets/fotos/crescer2.webp"></div>
+                        <div class="frame"><img src="assets/fotos/crescer3.webp"></div>
+                        <div class="frame"><img src="assets/fotos/crescer6.webp"></div>
+                        <div class="frame"><img src="assets/fotos/crescer7.webp"></div>
+
+                        <div class="frame"><img src="assets/fotos/crescer10.webp"></div>
+                        <div class="frame"><img src="assets/fotos/crescer13.webp"></div>
+                        <div class="frame"><img src="assets/fotos/encontro3.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia1.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia2.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia3.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia4.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia5.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia6.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia7.webp"></div>
+
+                    </div>
+                </div>
+
+                <div class="film-track">
+                    <div class="film-strip strip-right">
+                        <div class="frame"><img src="assets/fotos/familia8.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia11.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia14.webp"></div>
+                        <div class="frame"><img src="assets/fotos/familia16.webp"></div>
+                        <div class="frame"><img src="assets/fotos/final.webp"></div>
+                        <div class="frame"><img src="assets/fotos/hoje1.webp"></div>
+                        <div class="frame"><img src="assets/fotos/hoje2.webp"></div>
+                        <div class="frame"><img src="assets/fotos/hoje3.webp"></div>
+                        <div class="frame"><img src="assets/fotos/hoje14.webp"></div>
+                        <div class="frame"><img src="assets/fotos/hoje15.webp"></div>
+
+                        <div class="frame"><img src="assets/fotos/hoje19.webp"></div>
+                        <div class="frame"><img src="assets/fotos/nenem1.webp"></div>
+                        <div class="frame"><img src="assets/fotos/nenem2.jpeg"></div>
+                        <div class="frame"><img src="assets/fotos/nenem3.webp"></div>
+                        <div class="frame"><img src="assets/fotos/nenem4.webp"></div>
+                        <div class="frame"><img src="assets/fotos/nenem7.webp"></div>
+                        <div class="frame"><img src="assets/fotos/nenem8.webp"></div>
+                        <div class="frame"><img src="assets/fotos/nenem9.webp"></div>
+                        <div class="frame"><img src="assets/fotos/nenem10.webp"></div>
+                        <div class="frame"><img src="assets/fotos/treino7.webp"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="after" class="section-content">
+            <div class="after-header">
+                <h2 class="section-title">O Que Vem Depois</h2>
+                <p class="section-subtitle">O universo é pequeno para tudo o que ainda vamos viver.</p>
+            </div>
+
+            <div class="timeline-future">
+                <div class="future-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="bi bi-airplane-engines"></i>
+                        <h3>Novos Horizontes</h3>
+                        <p>Todas as viagens que ainda não fizemos e os lugares que esperam pelo nosso sorriso.</p>
+                    </div>
+                </div>
+
+                <div class="future-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="bi bi-house-heart"></i>
+                        <h3>Nosso Lar</h3>
+                        <p>Onde quer que a gente esteja, contanto que seja juntos, construindo nosso próprio mundo.</p>
+                    </div>
+                </div>
+
+                <div class="future-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="bi bi-infinity"></i>
+                        <h3>O Infinito</h3>
+                        <p>E tudo aquilo que ainda nem sonhamos, mas que o destino já reservou para nós.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-love" class="section-content">
+            <audio id="background-music-carta" loop>
+                <source src="assets/cortes/vejo-enfim-a-luz-brilhar-oway2ih12sm_pdhiqQet.mp3" type="audio/mpeg">
+            </audio>
+            <div class="final-container">
+                <div id="final-letter-content">
+                    <div class="stars-container">
+                        <span class="star-item">★</span>
+                        <span class="star-item">★</span>
+                        <span class="star-item">★</span>
+                        <span class="star-item">★</span>
+                        <span class="star-item">★</span>
+                    </div>
+
+
+
+
+                    <div class="heart-icon star-shining-heart"><i class="bi bi-heart-fill"></i></div>
+                    <h2 class="final-title">Meu amor,</h2>
+
+                    <div class="final-text">
+                        <p>Hoje é um dia especial não só porque você nasceu, mas porque o mundo ficou melhor a partir
+                            desse momento. E, de alguma forma inexplicável, o meu mundo também encontrou mais sentido
+                            quando você apareceu nele.</p>
+                        <p>Assim como na música que toca ao fundo, você é a minha luz. Você chegou quando tudo parecia
+                            confuso, quando eu ainda não entendia direito o meu lugar, e de repente tudo começou a fazer
+                            sentido. Com você, eu sinto que estou exatamente onde deveria estar.</p>
+                        <p>Você ilumina meus dias, até os mais difíceis. Você me guia, me acalma e me faz enxergar
+                            beleza onde antes eu só via dúvida. Ao seu lado, tudo fica mais claro, mais leve, mais
+                            verdadeiro</p>
+                        <p>Hoje eu quero celebrar você, sua existência, seu jeito, seu sorriso e tudo o que você é.
+                            Quero que saiba que você é especial demais para mim, que ocupa um lugar único no meu coração
+                            e que, assim como a luz das estrelas, você brilha mesmo quando não percebe.</p>
+                        <p>Que este novo ano da sua vida seja cheio de sonhos realizados, paz, amor e felicidade. E que
+                            eu possa continuar caminhando ao seu lado, vendo o mundo se transformar, simplesmente porque
+                            você está nele.</p>
+                        <p>Você é, e sempre será, a minha luz.</p>
+                    </div>
+                    <div class="reveal-arrow" onclick="revealFinalCard()">
+                        <i class="bi bi-chevron-double-down"></i>
+                    </div>
+                </div>
+
+                <div id="final-birthday-card" class="final-card-quote hidden-card">
+                    <div class="final-card-photo">
+                        <img src="assets/fotos/final3.webp" alt="Nossa Foto">
+                    </div>
+
+                    <h3>Feliz 21 anos.</h3>
+                    <p>"Eu escolheria você em qualquer universo."</p>
+
+                    <span class="signature">✨ Com todo meu amor, pra sempre ✨</span>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <script src="js/music-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/effects.js"></script>
+
+
+</body>
+
+</html>
