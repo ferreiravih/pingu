@@ -122,32 +122,52 @@ function drawConstellationLines() {
 }
 
 // Lógica do Modal (Memórias)
+// --- Lógica Completa do Modal (Memórias) ---
 const modal = document.getElementById('memory-modal');
 const closeModal = document.querySelector('.close-modal');
 
+// 1. ABRIR: Ao clicar nas estrelas
 document.querySelectorAll('.star-node').forEach(node => {
     node.addEventListener('click', () => {
-        // Pega os dados dos atributos data- da estrela
         const title = node.getAttribute('data-title');
         const text = node.getAttribute('data-text');
         const img = node.getAttribute('data-img');
 
-        // Alvos no HTML (Modal de Memórias)
         document.getElementById('modal-title').innerText = title;
         document.getElementById('modal-text').innerText = text;
         
-        // Aqui está o segredo: essa linha precisa existir para a imagem aparecer!
         const imageElement = document.getElementById('modal-img');
         if (imageElement && img) {
             imageElement.src = img;
-            imageElement.style.display = 'block'; // Garante que não está escondida
+            imageElement.style.display = 'block';
         }
 
-        const modalMemoria = document.getElementById('memory-modal');
-        modalMemoria.style.display = 'flex';
-        setTimeout(() => modalMemoria.style.opacity = '1', 10);
+        modal.style.display = 'flex';
+        // Pequeno delay para a transição de opacidade funcionar
+        setTimeout(() => modal.style.opacity = '1', 10);
     });
 });
+
+if (closeModal) {
+    closeModal.addEventListener('click', () => {
+        fecharModal();
+    });
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+    
+        if (e.target === modal) {
+            fecharModal();
+        }
+    });
+}
+function fecharModal() {
+    modal.style.opacity = '0';
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300); 
+}
 const closeModalFunc = () => {
     modal.style.opacity = '0';
     setTimeout(() => {
@@ -158,10 +178,6 @@ const closeModalFunc = () => {
 
 if(closeModal) closeModal.addEventListener('click', closeModalFunc);
 
-//musicaaaa
-
-// js/main.js atualizado com a Carta #1
-// 1. O BANCO DE DADOS (Onde você escreve suas mensagens)
 const meuBancoDeDados = {
     1: { 
         titulo: "Cause with all these things we do, it don't matter when, I'm coming home to you...", 

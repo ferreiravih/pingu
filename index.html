@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Feliz 21 anos 🤍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/cake.css">
     <link rel="stylesheet" href="css/constellations.css">
@@ -165,7 +166,7 @@
                         <span class="timeline-date">Família</span>
                         <div class="timeline-img">
                             <img src="assets/fotos/familia1.webp"
-                                data-images="assets/fotos/familia1.webp,assets/fotos/familia2.webp,assets/fotos/familia3.webp,assets/fotos/familia4.webp,assets/fotos/familia5.webp,assets/fotos/familia6.webp,assets/fotos/familia7.webp,assets/fotos/familia8.webp,assets/fotos/familia9.webp,assets/fotos/familia10.webp,assets/fotos/familia11.webp,assets/fotos/familia12.webp,assets/fotos/familia13.webp,assets/fotos/familia14.webp,assets/fotos/familia15.webp,assets/fotos/familia16.webp"
+                                data-images="assets/fotos/familia1.webp,assets/fotos/familia2.webp,assets/fotos/familia3.webp,assets/fotos/familia4.webp,assets/fotos/familia5.webp,assets/fotos/familia6.webp,assets/fotos/familia7.webp,assets/fotos/familia8.webp,assets/fotos/familia9.webp,assets/fotos/familia10.webp,assets/fotos/familia11.webp,assets/fotos/familia13.webp,assets/fotos/familia14.webp,assets/fotos/familia15.webp,assets/fotos/familia16.webp"
                                 class="rotating-image" alt="Família">
                         </div>
                         <h3>Suas Raízes</h3>
@@ -478,7 +479,42 @@
     <script src="js/main.js"></script>
     <script src="js/effects.js"></script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Só executa se for tela pequena (Mobile)
+        if (window.innerWidth <= 768) {
+            const container = document.getElementById('playlistContainer');
+            const prevBtn = document.querySelector('.nav-btn.prev');
+            const nextBtn = document.querySelector('.nav-btn.next');
 
+            if (container && prevBtn && nextBtn) {
+                // Função que calcula a largura exata da tela na hora do clique
+                const smartScroll = (direction) => {
+                    // Pega a largura exata da área visível das músicas
+                    const pageWidth = container.clientWidth;
+                    
+                    if (direction === 'next') {
+                        container.scrollBy({ left: pageWidth, behavior: 'smooth' });
+                    } else {
+                        container.scrollBy({ left: -pageWidth, behavior: 'smooth' });
+                    }
+                };
+
+                // Removemos os eventos antigos clonando os botões
+                // (Isso garante que o clique antigo "torto" pare de funcionar)
+                const newPrev = prevBtn.cloneNode(true);
+                const newNext = nextBtn.cloneNode(true);
+
+                prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+                nextBtn.parentNode.replaceChild(newNext, nextBtn);
+
+                // Adicionamos os novos eventos inteligentes
+                newPrev.addEventListener('click', () => smartScroll('prev'));
+                newNext.addEventListener('click', () => smartScroll('next'));
+            }
+        }
+    });
+</script>
 </body>
 
 </html>

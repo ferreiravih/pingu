@@ -9,7 +9,6 @@
     margin: 50px auto;
 }
 
-/* A linha central */
 .timeline-line {
     position: absolute;
     left: 50%;
@@ -22,17 +21,15 @@
 
 .timeline-item {
     position: relative;
-    width: 50%; /* Metade da tela */
+    width: 50%;
     margin-bottom: 60px;
     opacity: 0.9;
     transition: 0.5s;
 }
 
-/* Alternando lados: Ímpares na esquerda, Pares na direita */
 .timeline-item:nth-child(odd) { left: -5%; padding-right: 40px; text-align: right; }
 .timeline-item:nth-child(even) { left: 50%; padding-left: 40px; text-align: left; }
 
-/* A bolinha na linha */
 .timeline-dot {
     position: absolute;
     top: 20px;
@@ -48,7 +45,6 @@
 .timeline-item:nth-child(odd) .timeline-dot { right: -9px; }
 .timeline-item:nth-child(even) .timeline-dot { left: -9px; }
 
-/* Conteúdo do Card */
 .timeline-content {
     background: rgba(255, 255, 255, 0.03);
     padding: 20px;
@@ -66,88 +62,120 @@
     margin-bottom: 10px;
 }
 
-/* Container que segura a imagem */
 .timeline-img {
     width: 100%;
     max-width: 300px; 
     height: 200px;    
     margin: 0 auto 15px auto;
-    
     overflow: hidden; 
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 15px; 
 }
 
 .timeline-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    object-position: center; /* Foca no centro da foto */
+    object-fit: contain; 
     transition: opacity 0.5s ease-in-out, transform 0.5s ease;
-    display: block;
-    border-radius: 15px; 
 }
 
-/* Ajuste para o hover não quebrar o padrão */
-.timeline-item:hover .timeline-img img {
-    transform: scale(1.01);
-}
-
-
+.timeline-item:hover .timeline-img img { transform: scale(1.05); }
 .timeline-content h3 { color: #f4ecff; margin-bottom: 10px; }
 .timeline-content p { color: #bfa3ff; font-size: 0.95rem; line-height: 1.5; }
 
-/* Destaque para o dia que se conheceram */
-.timeline-item.highlight .timeline-content {
-    border: 2px solid #ff8dfb;
-    box-shadow: 0 0 20px rgba(255, 141, 251, 0.3);
-}
+/* --- RESTAURAÇÃO DO ESTILO: UMA IDEIA ROUBADA --- */
 
-/* Responsivo para celular */
-@media (max-width: 768px) {
-    .timeline-line { left: 20px; }
-    .timeline-item { width: 100%; left: 0 !important; padding-left: 50px !important; text-align: left !important; }
-    .timeline-dot { left: 12px !important; }
-}
-.timeline-img img {
-    width: 50%;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease; /* Adicionado o opacity */
-}
-
-/* Container principal sem fundo nenhum */
+/* O Container do texto */
 .poem-universe {
-    width: 95% !important; 
+    
     max-width: 1100px !important; 
-    margin: 0 auto !important;
     background: transparent !important; 
     padding: 20px !important;
-    box-shadow: none !important; /* Tira qualquer sombra de caixa */
+    box-shadow: none !important;
 }
 
-/* Formatação do texto solto no universo */
+/* O Texto em si (Centralizado e Brilhante) */
 .poem-text {
     font-size: 1.2rem !important;
     line-height: 1.7 !important;
     color: #ffffff !important;
-    text-align: center !important; 
+    text-align: center !important; /* Garante que fique no centro */
     margin-bottom: 30px !important; 
     background: transparent !important;
-    
-    text-shadow: 0 0 8px rgba(187, 154, 247, 0.6) !important; 
+    text-shadow: 0 0 8px rgba(187, 154, 247, 0.6) !important; /* Brilho neon suave */
 }
 
-/* No iPhone, para não ficar colado nas bordas */
+
 @media (max-width: 768px) {
-    .poem-text {
-        font-size: 1.1rem !important;
-        padding: 0 15px !important;
-    }
-}
+    
+    .timeline-line, .timeline-dot { display: none !important; }
 
-.welcome-title {
-    text-align: center !important;
-    display: block !important;
-    margin-bottom: 50px !important;
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 20px auto; 
+        padding: 0;
+    }
+
+    .timeline-item {
+        width: 90% !important;
+        left: 0 !important; right: 0 !important;
+        margin: 0 0 50px 0 !important;
+        padding: 0 !important;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center !important;
+    }
+
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
+        text-align: center !important; left: 0 !important; padding: 0 !important;
+    }
+    
+
+    .timeline-content {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 25px 20px !important;
+        border-radius: 35px !important; 
+        min-height: 520px !important; 
+        display: flex !important;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .timeline-img {
+        width: 100% !important;
+        height: 350px !important;     
+        max-height: 350px !important;
+        margin-bottom: 20px !important;        
+        border-radius: 25px !important; 
+        background: rgba(0, 0, 0, 0.2) !important; 
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .timeline-img img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important; 
+        border-radius: 25px !important;
+    } 
+
+    .timeline-content h3 { font-size: 1.5rem !important; margin-top: 10px; }
+    .timeline-content p { font-size: 1rem !important; text-align: center !important; }
+
+     .poem-text {
+        font-size: 1rem !important; 
+        padding: 0 10px !important;
+        text-align: center !important;
+    }
 }
 

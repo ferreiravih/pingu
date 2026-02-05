@@ -230,3 +230,66 @@ html, body {
   transform: translateY(0);
 }
 
+/* Estilo para o texto que estava sem classe específica */
+.text-subtitle {
+    font-size: 1.5rem; /* Tamanho bom para PC */
+    color: #e0d4fc;    /* Um lilás bem claro para ler bem */
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    animation: fadeInUp 1.5s ease; /* Uma animaçãozinha suave */
+}
+
+
+@media (max-width: 768px) {
+    
+    
+    .text-subtitle {
+        font-size: 1.4rem; 
+        padding: 0 20px;   
+        line-height: 1.5;
+    }
+
+  .btn-glow {
+        font-size: 1rem;
+        padding: 18px 35px;
+        width: auto;
+        min-width: 180px;
+        margin-top: 15px;
+        animation: pulseButton 2s infinite;
+    }
+
+    .nav-universe, #side-menu {
+        display: none !important; 
+        pointer-events: none;    
+    }
+  
+    #mouse-cursor {
+        display: none !important;
+    }
+
+   .welcome-title, .section-title {
+        font-size: 3rem !important; 
+        line-height: 1.2;
+        margin-bottom: 15px !important;
+        text-align: center !important; 
+        width: 100%;
+        display: block;
+    }
+
+    /* Subtítulos */
+    .welcome-subtitle, .section-subtitle {
+        text-align: center !important;
+        font-size: 0.9rem !important;
+        display: block;
+        width: 100%;
+        padding: 0 15px;
+    }          
+}
+
+/* Animação suave para o botão no celular */
+@keyframes pulseButton {
+    0% { box-shadow: 0 0 0 0 rgba(180, 120, 255, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(180, 120, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(180, 120, 255, 0); }
+}

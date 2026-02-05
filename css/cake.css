@@ -77,3 +77,33 @@ body {
   50% { transform: translateY(-8px); }
   100% { transform: translateY(0); }
 }
+
+
+@media (max-width: 768px) {
+
+    .universe-container {
+        width: 90%;
+        padding: 0 15px;
+    }
+    .cake-icon {
+        font-size: 80px;      
+        margin-bottom: 10px;
+    }
+
+
+    .title {
+        font-size: 2.5rem;    
+        line-height: 1.2;
+        margin-bottom: 5px;
+    }
+
+    .love {
+        font-size: 1rem;      
+        margin: 5px 0 15px 0; 
+    }
+
+    .age {
+        font-size: 2rem;     
+    }
+  
+}
