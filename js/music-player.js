@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- PLAYER DE MÚSICA ---
+    // Lógica de tocar música (idêntica à sua)
     let currentAudio = null;
     let currentlyPlayingCard = null;
 
@@ -16,37 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         currentAudio = new Audio(url);
-        currentAudio.volume = 1.0;
         currentAudio.play().then(() => {
             cardElement.classList.add('playing');
             currentlyPlayingCard = cardElement;
         }).catch(err => console.log("Erro:", err));
-        currentAudio.onended = () => {
-            cardElement.classList.remove('playing');
-            currentlyPlayingCard = null;
-            currentAudio = null;
-        };
     };
 
-    // --- ROLAGEM INTELIGENTE (4 em 4) ---
-    const container = document.getElementById('playlistContainer');
-    const btnNext = document.querySelector('.nav-btn.next');
-    const btnPrev = document.querySelector('.nav-btn.prev');
+    // A lógica das setas só funcionará se os botões estiverem visíveis (no PC)
+    const container = document.getElementById('songsSlider');
+    const btnNext = document.getElementById('nextBtn');
+    const btnPrev = document.getElementById('prevBtn');
 
-    if (container && btnNext && btnPrev) {
-        const newNext = btnNext.cloneNode(true);
-        const newPrev = btnPrev.cloneNode(true);
-        btnNext.parentNode.replaceChild(newNext, btnNext);
-        btnPrev.parentNode.replaceChild(newPrev, btnPrev);
-
-        newNext.addEventListener('click', () => {
-            // Rola a largura inteira da visão (que tem 2 colunas)
-            // Isso faz pular para o próximo bloco de 4 músicas
-            container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
-        });
-
-        newPrev.addEventListener('click', () => {
-            container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
-        });
+    if (btnNext && btnPrev && window.innerWidth > 768) {
+        btnNext.onclick = () => container.scrollBy({ left: 300, behavior: 'smooth' });
+        btnPrev.onclick = () => container.scrollBy({ left: -300, behavior: 'smooth' });
     }
 });

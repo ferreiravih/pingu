@@ -1,6 +1,6 @@
 .letters-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 40px auto;
@@ -24,25 +24,25 @@
     overflow: hidden;
 }
 
-.envelope:hover { 
-    transform: translateY(-10px) scale(1.05) rotate(2deg); 
+.envelope:hover {
+    transform: translateY(-10px) scale(1.05) rotate(2deg);
     background: rgba(187, 154, 247, 0.15);
     border-color: #bb9af7;
-    box-shadow: 0 15px 35px rgba(187, 154, 247, 0.3); 
+    box-shadow: 0 15px 35px rgba(187, 154, 247, 0.3);
 }
 
 .envelope i {
-    font-size: 2.5rem; 
+    font-size: 2.5rem;
     color: #bb9af7;
     margin-bottom: 8px;
     filter: drop-shadow(0 0 8px rgba(187, 154, 247, 0.4));
     filter: drop-shadow(0 0 2px rgba(187, 154, 247, 0));
 }
+
 .envelope:hover i {
-    color: #ffffff; 
-    transform: scale(1.2) rotate(5deg); 
-    filter: drop-shadow(0 0 8px #ff8dfb) 
-            drop-shadow(0 0 15px #bb9af7);
+    color: #ffffff;
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 8px #ff8dfb) drop-shadow(0 0 15px #bb9af7);
 }
 
 .envelope:hover span[style*="font-size"] {
@@ -95,12 +95,12 @@
 .letter-photo img {
     width: 100%;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 #soundtrack {
     padding: 40px 5%;
-    
+
     text-align: center;
 }
 
@@ -111,7 +111,7 @@ h2.section-title {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
-    
+
 }
 
 p.section-subtitle {
@@ -125,29 +125,30 @@ p.section-subtitle {
 }
 
 #playlistContainer {
-   width: 100%;
-   overflow-x: auto;
-   padding: 20px 0 40px;
-    
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0 40px;
+
 }
 
 .playlist-grid {
     display: grid;
-    grid-template-rows: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
     grid-auto-flow: column;
-    grid-auto-columns: 310px; 
+    grid-auto-columns: 310px;
     gap: 20px;
     width: max-content;
 }
 
 #modal-text {
-    color: #ffffff !important; 
+    color: #ffffff !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
+
 .music-card {
-    width: 280px; 
+    width: 280px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,45 +164,49 @@ p.section-subtitle {
 #playlistContainer::-webkit-scrollbar {
     height: 8px;
 }
+
 #playlistContainer::-webkit-scrollbar-thumb {
     background: #bb9af7;
     border-radius: 10px;
 }
 
 .playlist-scroll-container {
-   width: 100%;
-    overflow-x: hidden; 
+    width: 100%;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     padding: 20px 0;
-    
+
 }
 
 .slider-wrapper {
-  position: relative;
-    max-width: 1050px; 
+    position: relative;
+    max-width: 1050px;
     margin: 0 auto;
     display: flex;
     align-items: center;
- 
+
 }
 
 .vinyl-disk {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: 
-        radial-gradient(circle, #111 4%, transparent 5%), 
+    background:
+        radial-gradient(circle, #111 4%, transparent 5%),
         radial-gradient(circle, #222 15%, #111 16%, #111 28%, #222 29%),
-        repeating-radial-gradient(rgba(0,0,0,0.8) 0px, rgba(0,0,0,0.8) 1px, #111 2px, #111 3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+        repeating-radial-gradient(rgba(0, 0, 0, 0.8) 0px, rgba(0, 0, 0, 0.8) 1px, #111 2px, #111 3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
     margin-bottom: 15px;
 }
 
 .vinyl-disk::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
     border-radius: 50%;
 }
 
@@ -232,36 +237,55 @@ p.section-subtitle {
     box-shadow: 0 0 15px #bb9af7;
 }
 
-.nav-btn.prev { margin-right: 15px; }
-.nav-btn.next { margin-left: 15px; }
+.nav-btn.prev {
+    margin-right: 15px;
+}
 
-.load-more-container { display: none !important; }
-#btnLoadMore { display: none !important; }
+.nav-btn.next {
+    margin-left: 15px;
+}
+
+.load-more-container {
+    display: none !important;
+}
+
+#btnLoadMore {
+    display: none !important;
+}
 
 
 @keyframes spinVinyl {
-    from { transform: scale(1.1) rotate(0deg); }
-    to { transform: scale(1.1) rotate(360deg); }
+    from {
+        transform: scale(1.1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1.1) rotate(360deg);
+    }
 }
 
 .music-info h4 {
- color: #fff;
+    color: #fff;
     font-size: 1.1rem;
     margin: 5px 0;
     width: 100%;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .music-info p {
-   color: #bfa3ff;
+    color: #bfa3ff;
     font-size: 0.9rem;
     font-style: italic;
-    margin: 0;;
+    margin: 0;
+    ;
 }
 
-.load-more-container { margin: 50px 0; }
+.load-more-container {
+    margin: 50px 0;
+}
+
 #btnLoadMore {
     background: rgba(187, 154, 247, 0.1);
     border: 1px solid #bb9af7;
@@ -281,12 +305,22 @@ p.section-subtitle {
 }
 
 @media (max-width: 900px) {
-    .playlist-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-    .playlist-grid { grid-template-columns: 1fr; }
+    .playlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+@media (max-width: 600px) {
+    .playlist-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.section-content {
+        /* Garante que o container não prenda o scroll */
+        height: auto !important;
+        min-height: 100vh;
+        overflow: visible !important;
+    }
 .shooting-star {
     position: fixed;
     width: 4px;
@@ -296,8 +330,8 @@ p.section-subtitle {
     box-shadow: 0 0 8px 1px rgb(187, 154, 247), 0 0 12px #fff;
     z-index: 9999;
     pointer-events: none;
-    animation: shootingAnim 9s ease-out forwards; 
-    opacity: 0.6; 
+    animation: shootingAnim 9s ease-out forwards;
+    opacity: 0.6;
 }
 
 .shooting-star::after {
@@ -305,9 +339,9 @@ p.section-subtitle {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 120px; 
+    width: 120px;
     height: 2px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
 }
 
 @keyframes shootingAnim {
@@ -315,9 +349,11 @@ p.section-subtitle {
         transform: rotate(-35deg) translateX(0);
         opacity: 0;
     }
+
     10% {
         opacity: 0.8;
     }
+
     100% {
         transform: rotate(-35deg) translateX(-600px);
         opacity: 0;
@@ -346,186 +382,159 @@ p.section-subtitle {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.tunnel-photo:nth-child(1) { animation-delay: 0s; }
-.tunnel-photo:nth-child(2) { animation-delay: 2s; }
-.tunnel-photo:nth-child(3) { animation-delay: 4s; }
+.tunnel-photo:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.tunnel-photo:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.tunnel-photo:nth-child(3) {
+    animation-delay: 4s;
+}
 
 @keyframes zoomInPhoto {
-    0% { transform: translateZ(-1000px); opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { transform: translateZ(500px); opacity: 0; }
+    0% {
+        transform: translateZ(-1000px);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateZ(500px);
+        opacity: 0;
+    }
 }
 
 
 @media (max-width: 768px) {
     .letters-grid {
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 30px !important;      
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
         padding: 0 10px !important;
-        box-sizing: border-box !important; 
-        margin: 20px 0 !important; 
+        box-sizing: border-box !important;
+        margin: 20px 0 !important;
+    }
+
+    .music-card {
+        scroll-snap-align: start !important;
+        width: 100% !important;
     }
 
     .envelope {
-       width: 80px !important;
-        aspect-ratio: auto !important; 
-        height: 80px !important;  
+        width: 80px !important;
+        aspect-ratio: auto !important;
+        height: 80px !important;
         display: flex !important;
-        flex-direction: column !important; 
+        flex-direction: column !important;
         padding: 20px !important;
         align-items: center !important;
-        
+
     }
 
     .envelope i {
-        font-size: 2rem !important; 
+        font-size: 2rem !important;
         margin-bottom: 5px !important;
     }
 
     .envelope span {
         font-size: 1.1rem !important;
-        text-align: left !important; /* Texto alinhado à esquerda para leitura fácil */
+        text-align: left !important;
         line-height: 1.3 !important;
         color: #fff !important;
         font-weight: 500 !important;
     }
-.letter-modal-custom {
-        width: 90% !important;        /* Ocupa 90% da largura da tela (sobra margem) */
-        max-width: none !important;   /* Tira limite de largura antigo */
-        margin: 0 auto !important;    /* Centraliza na tela */
-        
-        /* Ajuste de espaço interno */
-        padding: 40px 20px 20px !important; /* Menos padding nas laterais */
-        
-        /* Garante que não estoure a altura */
-        max-height: 85vh !important;  /* Máximo 85% da altura da tela */
-        overflow-y: auto !important;  /* Permite rolar o texto se for longo */
-        
+
+    .letter-modal-custom {
+        width: 90% !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        padding: 40px 20px 20px !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
         box-sizing: border-box !important;
     }
 
-    /* 2. O Texto da Carta */
     .personal-message {
-        font-size: 1rem !important;   /* Tamanho bom de leitura */
-        line-height: 1.6 !important;  /* Espaço entre linhas para não embaralhar */
-        text-align: justify !important; /* Texto justificado fica mais organizado */
-        color: #e0e0e0 !important;    /* Cor clara para contraste */
+        font-size: 1rem !important;
+
+        line-height: 1.6 !important;
+        
+        text-align: justify !important;
+       
+        color: #e0e0e0 !important;
+      
         margin-bottom: 20px !important;
     }
 
-    /* 3. A Citação Musical (Frase em itálico) */
+ 
     .music-quote {
         font-size: 0.9rem !important;
         margin-bottom: 15px !important;
         padding: 0 10px !important;
     }
 
-    /* 4. A Foto dentro da carta (se tiver) */
+  
     .letter-photo img {
         width: 100% !important;
         height: auto !important;
-        max-height: 250px !important; /* Limite de altura para não ocupar tudo */
-        object-fit: contain !important; /* Foto inteira sem cortes */
+        max-height: 250px !important;
+    
+        object-fit: contain !important;
         margin-top: 10px !important;
     }
 
-    /* 5. Botão de Fechar (X) */
     .close-letter {
         top: 10px !important;
         right: 15px !important;
-        font-size: 2rem !important;   /* X maior para clicar fácil */
+        font-size: 2rem !important;
+    
         padding: 5px !important;
         z-index: 100;
     }
-
+.nav-btn {
+        display: none !important;
+    }
 
     .slider-wrapper {
-        position: relative !important;
-        width: 100% !important;
-        padding: 0 45px !important; /* Espaço para setas */
-        box-sizing: border-box !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    /* 2. O Grid (Grade) */
-    #playlistContainer {
-        width: 100% !important;
-        height: auto !important;
-        
-        display: grid !important;
-        /* 2 Linhas (Cima / Baixo) */
-        grid-template-rows: repeat(2, 1fr) !important; 
-        grid-auto-flow: column !important;
-        
-        /* O SEGREDO: Cada coluna tem 50% da largura.
-           Logo, cabem 2 colunas na tela = 4 Músicas visíveis. */
-        grid-auto-columns: 50% !important; 
-        
-        column-gap: 0 !important; /* Sem espaço lateral para não errar a conta */
-        row-gap: 15px !important;
-        
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important; /* Trava magnética */
-        scrollbar-width: none;
-        margin: 0 !important;
         padding: 0 !important;
+        display: block !important;
     }
 
-    /* 3. O Cartão */
+    .playlist-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; 
+        grid-auto-flow: row !important; 
+        gap: 15px !important;
+        width: 100% !important;
+        padding: 10px !important;
+        box-sizing: border-box !important;
+    }
+
     .music-card {
         width: 100% !important;
-        scroll-snap-align: start !important; /* Alinha no começo */
-        scroll-snap-stop: always !important;
-        
-        margin: 0 !important;
-        padding: 0 5px !important; /* Pequeno respiro entre elas */
-        box-sizing: border-box !important;
-        
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
+      
+        padding: 15px 5px !important;
     }
 
-    /* 4. Visual do Disco (Um pouco menor para caber 4 na tela) */
     .vinyl-disk {
-        width: 90px !important;
-        height: 90px !important;
-        margin-bottom: 5px !important;
-        border-radius: 50% !important;
+        width: 70px !important;
+        height: 70px !important;
     }
 
     .music-info h4 {
-        font-size: 0.8rem !important; /* Texto menor para não quebrar */
-        width: 95% !important;
-        text-align: center !important;
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        font-size: 0.8rem !important;
+        white-space: normal !important; 
     }
-    .music-info p {
-        font-size: 0.7rem !important;
-        text-align: center !important;
-    }
-
-    /* 5. Setas */
-    .nav-btn {
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        z-index: 100 !important;
-        width: 35px !important;
-        height: 35px !important;
-        background: rgba(16, 11, 27, 0.9) !important;
-        border: 1px solid rgba(187, 154, 247, 0.5) !important;
-        border-radius: 50% !important;
-        display: flex !important;
-        align-items: center; justify-content: center;
-    }
-    .nav-btn.prev { left: 2px !important; }
-    .nav-btn.next { right: 2px !important; display: flex !important; }
+   
 
 
 }
-

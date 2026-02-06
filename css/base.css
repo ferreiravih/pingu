@@ -15,16 +15,24 @@ html, body {
   color: #eae6f5;
   min-height: 100vh;
   scroll-behavior: smooth; 
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
 }
 
-/* 2. FUNDO E ELEMENTOS FIXOS */
+body::-webkit-scrollbar {
+  width: 4px;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(180, 120, 255, 0.3);
+  border-radius: 10px;
+}
+
 #main-universe {
-  display: none; /* Começa escondido */
+  display: none; 
   opacity: 0;
   width: 100%;
-  position: relative; /* Importante para o scroll funcionar */
+  position: relative; 
 }
 #starfield {
   position: fixed;
@@ -39,10 +47,9 @@ html, body {
   z-index: 9999;
 }
 
-/* 3. ESTRUTURA DE TELAS (INTRO E BOLO) */
 .screen {
   display: none;
-  position: fixed; /* Mantém intro e bolo fixos na tela toda */
+  position: fixed;
   inset: 0;
   flex-direction: column;
   align-items: center;
@@ -57,12 +64,10 @@ html, body {
   display: flex !important;
 }
 
-/* 4. CONTEÚDO DO UNIVERSO (O QUE APARECE DEPOIS) */
 #main-universe {
   position: relative;
   z-index: 10;
   width: 100%;
-  /* Começa invisível para o JS ativar */
   display: none; 
   opacity: 0;
 }
@@ -79,14 +84,13 @@ html, body {
   box-sizing: border-box;
 }
 
-/* 5. MENU DE NAVEGAÇÃO (O "NAVIO") */
 .nav-universe {
   position: fixed;
   right: 30px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999;
-  display: none; /* JS muda para flex */
+  display: none; 
   opacity: 0;
   transition: opacity 1s ease;
 }
@@ -128,21 +132,18 @@ html, body {
   transform: scale(1.1);
 }
 
-/* Garante que o item da lista seja o ponto de referência */
 .nav-list li {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Alinha o ícone à direita se necessário */
+    justify-content: flex-end; 
 }
 
-/* O balão de texto (Tooltip) aparecendo pelo lado ESQUERDO */
 .nav-list li::after {
     content: attr(title); 
     position: absolute;
     right: 70px; 
-    left: auto;  /* Reseta a propriedade left anterior */
-    
+    left: auto; 
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -158,19 +159,19 @@ html, body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    transform: translateX(10px); /* Começa um pouco para a direita para deslizar à esquerda */
+    transform: translateX(10px); 
     pointer-events: none;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Mostra o nome deslizando para a esquerda */
+
 .nav-list li:hover::after {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
 }
 
-/* 6. BOTÕES E TÍTULOS (ESTÉTICA PRESERVADA) */
+
 .btn-glow {
   background: rgba(148, 87, 235, 0.15);
   color: #f4ecff;
@@ -215,7 +216,6 @@ html, body {
   60% { transform: translateY(-5px); }
 }
 
-/* Efeito suave para o conteúdo das seções */
 .section-content {
   opacity: 0;
   transform: translateY(20px);
@@ -224,20 +224,18 @@ html, body {
   will-change: opacity, transform;
 }
 
-/* Quando a seção entra na tela, ela ganha esta classe */
 .section-content.reveal {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Estilo para o texto que estava sem classe específica */
 .text-subtitle {
-    font-size: 1.5rem; /* Tamanho bom para PC */
-    color: #e0d4fc;    /* Um lilás bem claro para ler bem */
+    font-size: 1.5rem; 
+    color: #e0d4fc;   
     font-weight: 300;
     letter-spacing: 1px;
     margin-bottom: 10px;
-    animation: fadeInUp 1.5s ease; /* Uma animaçãozinha suave */
+    animation: fadeInUp 1.5s ease; 
 }
 
 
@@ -287,7 +285,6 @@ html, body {
     }          
 }
 
-/* Animação suave para o botão no celular */
 @keyframes pulseButton {
     0% { box-shadow: 0 0 0 0 rgba(180, 120, 255, 0.4); }
     70% { box-shadow: 0 0 0 15px rgba(180, 120, 255, 0); }
