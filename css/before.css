@@ -107,75 +107,53 @@
     text-shadow: 0 0 8px rgba(187, 154, 247, 0.6) !important; /* Brilho neon suave */
 }
 
-
 @media (max-width: 768px) {
-    
-    .timeline-line, .timeline-dot { display: none !important; }
-
+    /* 1. CENTRALIZA A LINHA E AJUSTA O CONTAINER */
     .timeline {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: center; /* Centraliza os itens */
         width: 100%;
-        margin: 20px auto; 
-        padding: 0;
+        margin: 0 auto;
+        padding: 20px 0 !important;
+        overflow: hidden; /* Evita que o conteúdo escape para os lados */
+    }
+ 
+    /* 3. REMOVE AS BOLINHAS (DOTS) */
+   .timeline-line, 
+    .timeline-dot {
+        display: none !important;
     }
 
+    /* 4. CARDS CENTRALIZADOS E DENTRO DA TELA */
     .timeline-item {
-        width: 90% !important;
-        left: 0 !important; right: 0 !important;
-        margin: 0 0 50px 0 !important;
+        width: 90% !important; /* Ocupa 90% da largura para não bater na borda */
+        left: 0 !important;
+        margin: 20px 0 !important;
         padding: 0 !important;
-        
+        float: none !important;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center !important;
-    }
-
-    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
-        text-align: center !important; left: 0 !important; padding: 0 !important;
-    }
-    
-
-    .timeline-content {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 25px 20px !important;
-        border-radius: 35px !important; 
-        min-height: 520px !important; 
-        display: flex !important;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    .timeline-img {
-        width: 100% !important;
-        height: 350px !important;     
-        max-height: 350px !important;
-        margin-bottom: 20px !important;        
-        border-radius: 25px !important; 
-        background: rgba(0, 0, 0, 0.2) !important; 
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex !important;
-        align-items: center;
         justify-content: center;
     }
 
-    .timeline-img img {
+    .timeline-content {
         width: 100% !important;
-        height: 100% !important;
-        object-fit: contain !important; 
-        border-radius: 25px !important;
-    } 
+        margin: 0 !important;
+        padding: 15px !important;
+        box-sizing: border-box;
+        text-align: center !important; /* Texto centralizado para combinar com o layout */
+    }
 
-    .timeline-content h3 { font-size: 1.5rem !important; margin-top: 10px; }
-    .timeline-content p { font-size: 1rem !important; text-align: center !important; }
-
-     .poem-text {
-        font-size: 1rem !important; 
-        padding: 0 10px !important;
+    .timeline-item:nth-child(odd), 
+    .timeline-item:nth-child(even) {
+        left: 0 !important;
         text-align: center !important;
     }
-}
 
+    /* Ajuste da imagem para não esticar no iPhone */
+    .timeline-img {
+        width: 100% !important;
+        height: 200px !important;
+        border-radius: 10px;
+    }
+}

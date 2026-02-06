@@ -1,33 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Lógica de tocar música (idêntica à sua)
-    let currentAudio = null;
-    let currentlyPlayingCard = null;
+// Variável global para controlar o áudio atual
+window.currentAudioGlobal = null;
 
-    window.playSong = function(url, cardElement) {
-        if (currentAudio) {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-            if (currentlyPlayingCard) currentlyPlayingCard.classList.remove('playing');
-        }
-        if (currentlyPlayingCard === cardElement) {
-            currentlyPlayingCard = null;
-            currentAudio = null;
-            return;
-        }
-        currentAudio = new Audio(url);
-        currentAudio.play().then(() => {
-            cardElement.classList.add('playing');
-            currentlyPlayingCard = cardElement;
-        }).catch(err => console.log("Erro:", err));
-    };
+// Função para dar o Play
+window.playSong = function(url, cardElement) {
+    // Se já tiver algo tocando, para antes de começar a nova
+    if (window.currentAudioGlobal) {
+        window.currentAudioGlobal.pause();
+        window.currentAudioGlobal.currentTime = 0;
+    }
+    
+    window.currentAudioGlobal = new Audio(url);
+    window.currentAudioGlobal.play().catch(err => console.log("Erro ao tocar:", err));
 
-    // A lógica das setas só funcionará se os botões estiverem visíveis (no PC)
-    const container = document.getElementById('songsSlider');
-    const btnNext = document.getElementById('nextBtn');
-    const btnPrev = document.getElementById('prevBtn');
+    // Adiciona efeito visual se houver um elemento (como o disco girando)
+    if (cardElement) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        cardElement.classList.add('playing');
+    }
+};
 
-    if (btnNext && btnPrev && window.innerWidth > 768) {
-        btnNext.onclick = () => container.scrollBy({ left: 300, behavior: 'smooth' });
-        btnPrev.onclick = () => container.scrollBy({ left: -300, behavior: 'smooth' });
+// Função para Parar (agora disponível para todo o site)
+window.stopSong = function() {
+    if (window.currentAudioGlobal) {
+        window.currentAudioGlobal.pause();
+        window.currentAudioGlobal.currentTime = 0;
+        window.currentAudioGlobal = null;
+    }
+    document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+};
+
+// --- O PULO DO GATO ---
+// Este trecho vigia o fechamento dos modais automaticamente
+document.addEventListener('click', (e) => {
+    // Se clicou no botão de fechar (X) ou fora do modal (overlay)
+    if (e.target.classList.contains('close-modal') || e.target.classList.contains('modal-overlay')) {
+        window.stopSong();
     }
 });

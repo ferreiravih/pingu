@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 1. TRANSIÇÃO: INTRO -> BOLO
   btnStart.addEventListener("click", () => {
+    const finalMusic = document.getElementById('background-music-carta');
+    if (finalMusic) {
+        finalMusic.play().then(() => {
+            finalMusic.pause(); // Toca e pausa na hora para "desbloquear"
+        }).catch(() => {});
+    }
+    
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
 
